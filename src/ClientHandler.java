@@ -43,9 +43,9 @@ public class ClientHandler implements Runnable {
   }
 
   private void broadcastMessage(String message) {
-    for(ClientHandler client: clients) {
+    for (ClientHandler client : clients) {
       try {
-        if(!client.clientUserName.equals(clientUserName)) {
+        if (!client.clientUserName.equals(clientUserName)) {
           client.writer.write(message);
           client.writer.newLine();
           client.writer.flush();
@@ -55,7 +55,7 @@ public class ClientHandler implements Runnable {
       }
     }
   }
-  
+
   public void removeClient() {
     clients.remove(this);
     broadcastMessage(clientUserName + " has left the chat.");
@@ -76,7 +76,7 @@ public class ClientHandler implements Runnable {
         socket.close();
       }
 
-    } catch(IOException e) {
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }
